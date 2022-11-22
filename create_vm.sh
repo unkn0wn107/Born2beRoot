@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/11/22 02:40:32 by agaley           ###   ########lyon.fr    #
+#    Updated: 2022/11/22 22:59:11 by alex             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,6 @@ rm -r isofiles
 
 # Launch unattended install
 qemu-img create -f qcow2 debian_11.qcow2 8G
-qemu-system-x86_64 -hda debian_11.qcow2 -cdrom preseeded-$ISO -boot d -m 512
+qemu-system-x86_64 -hda debian_11.qcow2 -cdrom preseeded-$ISO -boot d -m 2048
 
 
