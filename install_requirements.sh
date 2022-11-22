@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    install_requirements.sh                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/22 02:38:46 by agaley            #+#    #+#              #
+#    Updated: 2022/11/22 02:39:02 by agaley           ###   ########lyon.fr    #
+#                                                                              #
+# **************************************************************************** #
+
 #!/bin/bash
 
-sudo apt install qemu qemu-utils
+sudo apt install qemu qemu-utils 7z xorriso
