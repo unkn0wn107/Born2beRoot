@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/11/22 22:59:11 by alex             ###   ########lyon.fr    #
+#    Updated: 2022/11/22 23:59:12 by alex             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,10 @@ cd ..
 
 # Repack preseeded iso https://wiki.debian.org/RepackBootableISO
 # isofiles/.disk/mkisofs with stripped Jigdo
-dd if="$ISO" bs=1 count=432 of="$mbr_template"
+#dd if="$ISO" bs=1 count=432 of="$mbr_template"
 xorriso -as mkisofs \
 		-r -V 'Debian 11.5.0 amd64 n' \
 		-o "preseeded-$ISO" -J -joliet-long -cache-inodes \
-		-isohybrid-mbr "$mbr_template" \
 		-b isolinux/isolinux.bin -c isolinux/boot.cat \
 		-boot-load-size 4 -boot-info-table -no-emul-boot \
 		-eltorito-alt-boot -e boot/grub/efi.img \
