@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/11/30 19:52:55 by alex             ###   ########lyon.fr    #
+#    Updated: 2022/12/06 01:56:39 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ gunzip isofiles/install.amd/initrd.gz
 echo preseed.cfg | cpio -H newc -o -A -F isofiles/install.amd/initrd
 gzip isofiles/install.amd/initrd
 chmod -w -R isofiles/install.amd/
+cp post_install.sh isofiles/
+cp status.sh isofiles/
 cd isofiles
 chmod +w md5sum.txt
 # Warning is OK - find: File system loop detected;
@@ -51,4 +53,3 @@ rm -r isofiles
 qemu-img create -f qcow2 debian_11.qcow2 8G
 qemu-system-x86_64 -hda debian_11.qcow2 -cdrom preseeded-$ISO -boot d -m 2048\
 	--enable-kvm
-
