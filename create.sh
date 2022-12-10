@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    create_vm.sh                                       :+:      :+:    :+:    #
+#    create.sh                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/12/10 22:44:02 by agaley           ###   ########lyon.fr    #
+#    Updated: 2022/12/10 23:40:16 by alex             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 SIZE=31G
 ISO=debian-11.5.0-amd64-netinst.iso
 
-wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/$ISO
+#wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/$ISO
 
 rm debian_11.qcow2
 
@@ -58,3 +58,4 @@ qemu-system-x86_64 -hda debian_11.qcow2 -cdrom preseeded-$ISO -boot d -m 2048 \
 	--enable-kvm
 qemu-system-x86_64 -hda debian_11.qcow2 -boot d -m 2048	--enable-kvm \
 	-net nic -net user,hostfwd=tcp::4242-:4242
+
