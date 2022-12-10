@@ -42,6 +42,11 @@ You need to rename the files (especially the name preseed.cfg should be kept).
 Feedbacks and contributions are welcome
 AMA as an issue or reach me @unkn0wn107 - agaley (:
 
+Suggested improvements :
+- Select "Install" remotely to start the install process automatically
+  - I read here and there things about telnet
+- Feed the services_install.sh to ssh
+- Make the script compatible with Mac : Machines will be soon on Linux, so ...
 
 ## >> Development <<
 #### Reaching stable configs was quite hard (long) for me, due to :
