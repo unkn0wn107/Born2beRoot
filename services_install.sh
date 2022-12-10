@@ -28,3 +28,12 @@ wp config create --path="$WP_PATH" --dbname="$DB_NAME" --dbuser="$DB_USER" --dbp
 wp db create --path="$WP_PATH"
 wp core install --path="$WP_PATH" --url=localhost --title="Born2BeRoot bonus Wordpress" \
   --admin_user="$WP_ADMN" --admin_password="$WP_PASS" --admin_email="$WP_MAIL"
+
+echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect lighttpd" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/admin-user string $DB_USER" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/admin-pass password $DB_PASS" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/app-pass password $WP_PASS" |debconf-set-selections
+echo "phpmyadmin phpmyadmin/app-password-confirm password $WP_PASS" | debconf-set-selections
+
+sudo apt -y install phpmyadmin
