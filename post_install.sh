@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 20:14:57 by agaley            #+#    #+#              #
-#    Updated: 2022/12/10 21:44:43 by agaley           ###   ########lyon.fr    #
+#    Updated: 2022/12/10 21:36:53 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ chpasswd <<<"agaley:Unkn0wn107"
 chpasswd <<<"root:Unkn0wn107"
 # #echo $USR_PSD | sudo passwd agaley
 # #echo $ROOT_PSD | sudo passwd root
-
 chmod +x /root/status.sh
-echo '*/10 * * * * root /bin/sh /root/status.sh' > /etc/cron.d/status
+chmod +x /home/agaley/services_install.sh
+chown agaley:agaley /home/agaley/services_install.sh
+chmod 775 /var/www/html
+chown -R www-data:www-data /var/www/html

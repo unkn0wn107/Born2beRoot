@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/12/10 21:46:55 by agaley           ###   ########lyon.fr    #
+#    Updated: 2022/12/10 22:44:02 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ rm debian_11.qcow2
 7z x -oisofiles $ISO
 chmod +w -R isofiles/install.amd/
 gunzip isofiles/install.amd/initrd.gz
-echo preseed_bonus.cfg | cpio -H newc -o -A -F isofiles/install.amd/initrd
+echo preseed.cfg | cpio -H newc -o -A -F isofiles/install.amd/initrd
 gzip isofiles/install.amd/initrd
 chmod -w -R isofiles/install.amd/
-cp post_install_bonus.sh isofiles/
+cp post_install.sh isofiles/
 cp services_install.sh isofiles/
 cp status.sh isofiles/
 cd isofiles
