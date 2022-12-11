@@ -16,7 +16,7 @@ sudo ufw allow http
 sudo ufw allow 4242
 sudo ufw enable
 
-sudo apt install -y curl php php-fpm php-mysql php-curl php-xml php-json php-zip php-mbstring php-gd php-intl php-cgi 
+sudo apt install -y curl php php-fpm php-mysql php-curl php-xml php-json php-zip php-mbstring php-gd php-intl
 echo "cgi.fix_pathinfo=1" | sudo tee -a /etc/php/7.4/fpm/php.ini
 sudo systemctl restart php7.4-fpm
 
