@@ -1,0 +1,54 @@
+# Fail attempts to install these other services
+
+# ufw rules for ftp
+# sudo ufw allow 20/tcp
+# sudo ufw allow 21/tcp
+
+# WIP install vsftpd - issue with "waiting for welcome message"
+# sudo apt install -y vsftpd
+# sudo systemctl start vsftpd
+# sudo echo "$FTP_USR" | sudo tee -a /etc/vsftpd.userlist
+# sudo tee -a /etc/vsftpd.conf <<EOF
+# listen=NO
+# listen_ipv6=YES
+# anonymous_enable=NO
+# local_enable=YES
+# write_enable=YES
+# dirmessage_enable=YES
+# use_localtime=YES
+# xferlog_enable=YES
+# connect_from_port_20=YES
+# pam_service_name=vsftpd
+# user_sub_token=$FTP_USR
+# local_root=/var/www/html
+# userlist_enable=YES
+# userlist_file=/etc/vsftpd.user_list
+# userlist_deny=NO
+# EOF
+# sudo systemctl restart vsftpd
+# sudo systemctl enable vsftpd
+
+# WIP install pure-ftpd - issue with "waiting for welcome message"
+# sudo apt install -y pure-ftpd
+# sudo systemctl start pure-ftpd
+# sudo openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/ssl/private/pure-ftpd.pem -out /etc/ssl/private/pure-ftpd.pem -days 365
+# echo "yes" | sudo tee /etc/pure-ftpd/conf/Daemonize
+# echo "yes" | sudo tee /etc/pure-ftpd/conf/NoAnonymous
+# echo "yes" | sudo tee /etc/pure-ftpd/conf/ChrootEveryone
+# echo "2" | sudo tee /etc/pure-ftpd/conf/TLS
+# echo "yes" | sudo tee /etc/pure-ftpd/conf/PAMAuthentication
+# echo "21" | sudo tee /etc/pure-ftpd/conf/Bind
+# sudo systemctl restart pure-ftpd
+# sudo systemctl enable pure-ftpd
+
+# Drop PhpMyAdmin install as post_install hook is buggy now with lighttpd on Debian 11
+# sudo debconf-set-selections <<<"phpmyadmin phpmyadmin/reconfigure-webserver multiselect lighttpd"
+# sudo debconf-set-selections <<<"phpmyadmin phpmyadmin/dbconfig-install boolean true"
+# sudo debconf-set-selections <<<"phpmyadmin phpmyadmin/mysql/admin-user string root"
+# # sudo debconf-set-selections <<<"phpmyadmin phpmyadmin/mysql/admin-pass password $DB_PASS"
+# sudo debconf-set-selections <<<"phpmyadmin phpmyadmin/mysql/app-pass password $WP_PASS"
+# sudo debconf-set-selections <<<"phpmyadmin phpmyadmin/app-password-confirm password $WP_PASS"
+# sudo apt -y install phpmyadmin
+# Fix mess after post_install hook
+# sudo rm /etc/lighttpd/conf-enabled/*-fastcgi-php.conf
+# sudo rm /etc/lighttpd/conf-enabled/*-fastcgi.conf

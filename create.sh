@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/12/10 23:40:16 by alex             ###   ########lyon.fr    #
+#    Updated: 2022/12/11 05:39:38 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ chmod -w -R isofiles/install.amd/
 cp post_install.sh isofiles/
 cp services_install.sh isofiles/
 cp status.sh isofiles/
+cp backup.sh isofiles/
 cd isofiles
 chmod +w md5sum.txt
 # Warning is OK - find: File system loop detected;
