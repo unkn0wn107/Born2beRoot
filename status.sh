@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 22:27:29 by agaley            #+#    #+#              #
-#    Updated: 2022/12/11 21:47:35 by agaley           ###   ########lyon.fr    #
+#    Updated: 2022/12/11 22:25:13 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ wall <<EOF
 #Disk Usage: $(df -h | grep ' /$' | awk '{printf "%d/%s (%s)", $3,$2,$5}')
 #CPU Load: $(top -bn1 | grep load | awk '{printf "%.2f%%\t\t\n", $(NF-2)}')
 #Last boot: $(who -b | awk '{print $3" "$4" "$5}')
-#LVM use: $(lsblk | grep lvm | awk '{if ($1) {print "yes";exit;} else {print "no"} }')
+#LVM use: $(lsblk | grep lvm | wc -l | awk '{ print $0 ? "yes" : "no" }')
 #Connection TCP: $(ss -t | grep ESTAB | wc -l) ESTABLISHED
 #User log: $(who | awk '{print $1}' | sort -u | wc -l)
 #Network: IP $(hostname -I | awk '{print $1}') ($(cat /sys/class/net/ens3/address))
