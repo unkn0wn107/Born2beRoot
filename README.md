@@ -1,6 +1,6 @@
 # Born2BeRoot - 42 Lyon
 
-#### Unattended (auto) Debian VM installation
+#### Unattended (almost-auto) Debian VM installation
 > Works on Debian, probably on other debian-based distros.
 https://wiki.debian.org/DebianInstaller/Preseed/
 
@@ -11,12 +11,13 @@ and launch the freshly installed system.
 
 #### Requirements : `./install_requirements.sh`
 
-#### Default
-Bonus VM with Phpmyadmin as extra service
+#### Default - VM with Bonuses
+Bonus VM with rsync incremental backups as extra service
 
-#### Part 1
+#### Part 1 - Mandatory VM
 Mandatory VM can be built using .part1 post_install and preseed.
 You need to rename the files (especially the name preseed.cfg should be kept).
+Not tried it recently, don't know if everything is working out of the box.
 
 ## 1.  Edit preseed.cfg
 - Change hostname to yourlogin42
@@ -29,8 +30,9 @@ You need to rename the files (especially the name preseed.cfg should be kept).
 - Select "Install" and press enter
 - Wait for full install to proceed
 - The install vm should ask to restart if no error occured
-- Poweroff with ctrl+c on "create" terminal, installed system should launch
-- Launch again vmcviewer, default crypt pass is Unkn0wn107
+- Accept restart and close after restart (ctrl+c on "create" terminal)
+- `./start.sh`
+- Launch again vncviewer in the other terminal, default crypt pass is Unkn0wn107
 - Stop vncviewer
 
 ## 3.  Install bonus services

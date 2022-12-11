@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/12/11 13:27:44 by agaley           ###   ########lyon.fr    #
+#    Updated: 2022/12/11 15:44:36 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,6 @@ qemu-img create -f qcow2 debian_11.qcow2 "$SIZE"
 qemu-system-x86_64 -hda debian_11.qcow2 -cdrom preseeded-$ISO -boot d -m 2048 \
 	--enable-kvm
 
-qemu-system-x86_64 -hda debian_11.qcow2 -boot d -m 2048	--enable-kvm \
-			-nic user,hostfwd=tcp::4242-:4242 \
-			-nic user,hostfwd=tcp::8080-:80
+echo "Debian installation complete, you can start your vm now ./start.sh"
+echo "Launch ./services_install.sh when logged-in with your user"
+
