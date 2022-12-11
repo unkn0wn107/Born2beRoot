@@ -12,7 +12,7 @@ USR_LOG=agaley
 
 echo '*/10 * * * * root bash /root/status.sh' | sudo tee /etc/cron.d/status
 
-sudo ufw allow http
+sudo ufw allow 80
 sudo ufw allow 4242
 sudo ufw enable
 
@@ -20,18 +20,18 @@ sudo apt install -y curl php php-fpm php-mysql php-curl php-xml php-json php-zip
 echo "cgi.fix_pathinfo=1" | sudo tee -a /etc/php/7.4/fpm/php.ini
 sudo systemctl restart php7.4-fpm
 
+sudo sed -i $'s/^.*fpm\.sock.*$/\t"socket" => "/var/run/php/php7.4-fpm.sock",/' /etc/lighttpd/conf-available/*php-fpm.conf
+sudo lighttpd-enable-mod accesslog
+sudo lighttpd-enable-mod rewrite
 sudo lighttpd-enable-mod fastcgi
 sudo lighttpd-enable-mod fastcgi-php-fpm
-sudo ln -s /etc/lighttpd/conf-available/*fastcgi-php-fpm.conf /etc/lighttpd/conf-enabled/
-sudo ln -s /etc/lighttpd/conf-available/*fastcgi.conf /etc/lighttpd/conf-enabled/
 sudo systemctl restart lighttpd
 
 # Setup db
 sudo mysql -u root <<EOF
 CREATE DATABASE $DB_NAME;
-GRANT ALL PRIVILEGES on $DB_NAME.* TO $DB_USER@localhost IDENTIFIED BY $DB_PASS;
+GRANT ALL on $DB_NAME.* TO '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';
 FLUSH PRIVILEGES;
-EXIT;
 EOF
 
 # Install Wordpress
@@ -47,4 +47,4 @@ sudo chown -R www-data:www-data /var/www/html
 # Setup incremental backup script with rsync
 sudo mkdir /srv/backups
 sudo chown $USR_LOG:$USR_LOG /srv/backups
-echo "0 1 * * * $USR_LOG bash /home/$USR_LOG/backup.sh" | sudo tee /etc/cron.d/
+echo "0 1 * * * $USR_LOG bash /home/$USR_LOG/backup.sh" | sudo tee /etc/cron.d/backup
