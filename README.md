@@ -1,7 +1,8 @@
-# Born2BeRoot
+# Born2BeRoot - 42 Lyon
 
-#### Born2BeRoot unattended install of Debian vm
+#### Unattended (auto) Debian VM installation
 > Works on Debian, probably on other debian-based distros.
+https://wiki.debian.org/DebianInstaller/Preseed/
 
 This allows you to preseed an iso of Debian with predefined configurations.
 It consists of create script which downloads Debian netinst iso,
@@ -14,7 +15,7 @@ and launch the freshly installed system.
 Bonus VM with Phpmyadmin as extra service
 
 #### Part 1
-Mandatory VM can be built using .simple post_install and preseed.
+Mandatory VM can be built using .part1 post_install and preseed.
 You need to rename the files (especially the name preseed.cfg should be kept).
 
 ## 1.  Edit preseed.cfg
@@ -25,9 +26,10 @@ You need to rename the files (especially the name preseed.cfg should be kept).
 ## 2.  Create and launch VM
 - `./create.sh`
 - Launch vncviewer in another terminal, i use tigervnc-viewer
-- Select Install and press enter
+- Select "Install" and press enter
 - Wait for full install to proceed
-- The install vm should stop if no error occured
+- The install vm should ask to restart if no error occured
+- Poweroff with ctrl+c on "create" terminal, installed system should launch
 - Launch again vmcviewer, default crypt pass is Unkn0wn107
 - Stop vncviewer
 
@@ -36,6 +38,7 @@ You need to rename the files (especially the name preseed.cfg should be kept).
 - Run `./services_install.sh`
 
 ## 4.  Enjoy !
+Just run `./start.sh` to start the VM and `sudo poweroff` to stop
 
 
 ## >> Contributing <<
