@@ -13,17 +13,19 @@ USR_LOG=agaley
 echo '*/10 * * * * root bash /root/status.sh' | sudo tee /etc/cron.d/status
 
 echo $'\nSetup ufw'
+echo '=========='
 sudo ufw allow 80
 sudo ufw allow 4242
 sudo ufw --force enable
 
 echo $'\nInstall php'
+echo '============'
 sudo apt install -y curl php php-fpm php-mysql php-curl php-xml php-json php-zip php-mbstring php-gd php-intl
 echo "cgi.fix_pathinfo=1" | sudo tee -a /etc/php/7.4/fpm/php.ini
 sudo systemctl restart php7.4-fpm
 
-echo $'Configure Lighttpd'
-sudo sed -i $'s/^.*fpm\.sock.*$/\t"socket" => "/var/run/php/php7.4-fpm.sock",/' /etc/lighttpd/conf-available/*php-fpm.conf
+echo $'\nConfigure Lighttpd'
+echo '==================='
 sudo lighttpd-enable-mod accesslog
 sudo lighttpd-enable-mod rewrite
 sudo lighttpd-enable-mod fastcgi
@@ -32,6 +34,7 @@ sudo systemctl restart lighttpd
 
 # Setup db
 echo $'\nConfigure database'
+echo '=================='
 sudo mysql -u root <<EOF
 CREATE DATABASE $DB_NAME;
 GRANT ALL on $DB_NAME.* TO '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';
@@ -40,6 +43,7 @@ EOF
 
 # Install Wordpress
 echo $'\nInstall Wordpress'
+echo '=================='
 sudo curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 sudo chmod +x /usr/local/bin/wp
 wp core download --path="$WP_PATH" --locale="$WP_LOCL"
@@ -51,13 +55,15 @@ sudo chown -R www-data:www-data /var/www/html
 
 # Setup incremental backup script with rsync
 echo $'\nInstall incremental backup service'
+echo '=================================='
 sudo mkdir /srv/backups
 sudo chown $USR_LOG:$USR_LOG /srv/backups
 echo "0 1 * * * $USR_LOG bash /home/$USR_LOG/backup.sh" | sudo tee /etc/cron.d/backup
 
 cat <<EOF
-
+========================================================
 Installation of Wordpress on Lighttpd + php-fpm complete
+========================================================
 
 If everything went well :
 - Access Wordpress on http://localhost

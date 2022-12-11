@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/12/11 15:44:36 by agaley           ###   ########lyon.fr    #
+#    Updated: 2022/12/11 20:50:50 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 SIZE=31G
 ISO=debian-11.5.0-amd64-netinst.iso
 
-#wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/$ISO
+wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/$ISO
 
 rm debian_11.qcow2
 
