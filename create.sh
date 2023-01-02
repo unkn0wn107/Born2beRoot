@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 21:00:58 by agaley            #+#    #+#              #
-#    Updated: 2022/12/11 20:50:50 by agaley           ###   ########lyon.fr    #
+#    Updated: 2023/01/02 18:05:29 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 # SIZE=8G
 SIZE=31G
-ISO=debian-11.5.0-amd64-netinst.iso
+ISO=debian-11.6.0-amd64-netinst.iso
 
 wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/$ISO
 
@@ -42,7 +42,7 @@ cd ..
 # Repack preseeded iso https://wiki.debian.org/RepackBootableISO
 # isofiles/.disk/mkisofs with stripped Jigdo
 xorriso -as mkisofs \
-		-r -V 'Debian 11.5.0 amd64 n' \
+		-r -V 'Debian 11.6.0 amd64 n' \
 		-o "preseeded-$ISO" -J -joliet-long -cache-inodes \
 		-b isolinux/isolinux.bin -c isolinux/boot.cat \
 		-boot-load-size 4 -boot-info-table -no-emul-boot \
