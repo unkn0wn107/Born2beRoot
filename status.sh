@@ -6,7 +6,7 @@
 #    By: agaley <agaley@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 22:27:29 by agaley            #+#    #+#              #
-#    Updated: 2022/12/11 22:25:13 by agaley           ###   ########lyon.fr    #
+#    Updated: 2023/01/02 17:51:50 by agaley           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,6 @@ wall <<EOF
 #LVM use: $(lsblk | grep lvm | wc -l | awk '{ print $0 ? "yes" : "no" }')
 #Connection TCP: $(ss -t | grep ESTAB | wc -l) ESTABLISHED
 #User log: $(who | awk '{print $1}' | sort -u | wc -l)
-#Network: IP $(hostname -I | awk '{print $1}') ($(cat /sys/class/net/ens3/address))
+#Network: IP $(hostname -I | awk '{print $1}') ($(cat /sys/class/net/enp0s3/address))
 #Sudo: $(grep 'COMMAND' /var/log/sudo/audit | wc -l) cmd
 EOF
